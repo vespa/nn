@@ -1,1 +1,22 @@
-{}
+{
+  "customer": "João da Silva",
+  "queryDate": 2018,
+  "extract": [
+    {
+      "type": "debit",
+      "text": "Este é um comprovante de compra"
+    },    {
+      "type": "credit",
+      "text": "Este é um comprovante de compra"
+    },    {
+      "type": "debit",
+      "text": "Este é um comprovante de compra"
+    },    {
+      "type": "debit",
+      "text": "Este é um comprovante de compra"
+    },    {
+      "type": "debit",
+      "text": "Este é um comprovante de compra"
+    }
+  ]
+}
