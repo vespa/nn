@@ -1,4 +1,5 @@
 import React from 'react';
+import List from '../../components/List';
 
 class Index extends React.Component {
   static async getInitialProps() {
@@ -8,7 +9,7 @@ class Index extends React.Component {
 
   render() {
     return (
-      <div>Hello</div>
+      <div><List options={[{ icon: 'icon-categoria', text: 'This is a text' }]} /></div>
     );
   }
 }
