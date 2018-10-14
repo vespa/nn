@@ -1,14 +1,55 @@
 {
   "env": {
     "development": {
-      "presets": ["next/babel"]
+      "presets": ["next/babel"],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "~": "./src"
+            }
+          }
+        ]
+      ]
     },
     "production": {
-      "presets": ["next/babel"]
+      "presets": ["next/babel"],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "~": "./src"
+            }
+          }
+        ]
+      ]
     },
     "test": {
-      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
+      "presets": [
+        [
+          "next/babel",
+          {
+            "preset-env": {
+              "modules": "commonjs"
+            }
+          }
+        ]
+      ],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "~": "./src"
+            }
+          }
+        ]
+      ]
     }
-  },
-  "plugins": [ "inline-react-svg" ]
+  }
 }
