@@ -1,7 +1,5 @@
 body {
-  background-color: blue
-}
-.teste {
-  background-color: red;
-  font-size: 20px;
+  background-color: $color__background--primary;
+  color: $color__font--primary;
+  font-family: Arial, sans-serif;
 }

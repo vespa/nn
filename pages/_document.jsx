@@ -2,7 +2,7 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import 'normalize.css';
-import css from '../sass/main.scss';
+import '../sass/main.scss';
 
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }) {
