@@ -32,7 +32,6 @@ class List extends React.Component {
         {options.map((item) => {
           return (
             <li key={item.text}>
-              <span>{item.ico}</span>
               <span>{item.text}</span>
               <span>ico</span>
             </li>

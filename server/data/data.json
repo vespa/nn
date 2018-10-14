@@ -1,22 +1,28 @@
 {
   "customer": "João da Silva",
   "queryDate": 2018,
+  "currentBalance": "100.000.000,00",
   "extract": [
     {
       "type": "debit",
-      "text": "Este é um comprovante de compra"
+      "text": "Este é um comprovante de compra",
+      "value": "188,00"
     },    {
       "type": "credit",
-      "text": "Este é um comprovante de compra"
+      "text": "Este é um crédito em conta",
+      "value": "110,00"
     },    {
       "type": "debit",
-      "text": "Este é um comprovante de compra"
+      "text": "Este é um comprovante de compra",
+      "value": "60,00"
     },    {
       "type": "debit",
-      "text": "Este é um comprovante de compra"
+      "text": "Este é um comprovante de compra",
+      "value": "200,00"
     },    {
       "type": "debit",
-      "text": "Este é um comprovante de compra"
+      "text": "Este é um comprovante de compra",
+      "value": "200,00"
     }
   ]
 }

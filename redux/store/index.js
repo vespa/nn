@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
-import list from '../ducks/list';
+import { list } from '../ducks/list';
 
 const reducerMap = {
   list,
