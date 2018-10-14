@@ -14,11 +14,11 @@ npm start
 
 ### Run tests and coverage:
 ```js 
-`npm test`
+npm test
 ```
 ### Run ESLint
 ```js 
-`npm run lint`
+npm run lint
 ```
 
 ### Generate Docs (up on http://localhost:6060/)
