@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import List from '../../components/List';
+import Image from '../../components/Image';
 import { listGetData } from '../../redux/ducks/list';
 /** Calls the first page */
 class Index extends React.Component {
@@ -16,9 +17,17 @@ class Index extends React.Component {
   }
 
   render() {
-    const { res: { extract, currentBalance } } = this.props;
+    const {
+      res: {
+        extract, currentBalance, queryDate, customer,
+      },
+    } = this.props;
     return (
       <div>
+        <Image src="icon-calendar" alt="" />
+        <div> Saldo {currentBalance} </div>
+        <div> {queryDate} </div>
+        <div> Bem vindo, {customer} </div>
         <List options={extract} />
       </div>
     );

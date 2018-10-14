@@ -7,22 +7,31 @@
       "type": "debit",
       "text": "Este é um comprovante de compra",
       "value": "188,00"
-    },    {
+    },
+    {
       "type": "credit",
       "text": "Este é um crédito em conta",
       "value": "110,00"
-    },    {
+    },
+    {
       "type": "debit",
       "text": "Este é um comprovante de compra",
       "value": "60,00"
-    },    {
+    },
+    {
       "type": "debit",
       "text": "Este é um comprovante de compra",
       "value": "200,00"
-    },    {
+    },
+    {
       "type": "debit",
       "text": "Este é um comprovante de compra",
       "value": "200,00"
+    },
+    {
+      "type": "credit",
+      "text": "Este é um crédito em conta",
+      "value": "110,00"
     }
   ]
 }

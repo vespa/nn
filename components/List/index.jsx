@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from '../Image';
 
 /**
  * This component provides a simple List structure
@@ -27,13 +28,17 @@ class List extends React.Component {
 
   render() {
     const { options } = this.props;
+    let index = 0;
     return (
       <ul>
         {options.map((item) => {
+          index += 1;
           return (
-            <li key={item.text}>
+            <li key={`${item.text}${index}`}>
               <span>{item.text}</span>
-              <span>ico</span>
+              <a href="#remove">
+                <span><Image src="icon-delete" alt="deletar" /></span>
+              </a>
             </li>
           );
         }) }
