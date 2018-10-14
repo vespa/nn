@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 /* eslint-disable import/no-dynamic-require */
 /** Return images from assets folder */
 const Image = ({ src, alt }) => (
-  <div>
+  <React.Fragment>
     <img src={require(`../../assets/${src}.png`)} alt={alt} />
-  </div>
+  </React.Fragment>
 );
 
 Image.propTypes = {
