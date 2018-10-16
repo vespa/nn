@@ -1,0 +1,10 @@
+@import '../../sass/vars';
+@import '../../sass/mixins';
+
+.card {
+  width: 31.25rem;
+  background-color: $color__background--secondary;
+  margin: 0 3.375rem;
+  height: 31.875rem;
+  @include border-radius(0.5rem);
+}

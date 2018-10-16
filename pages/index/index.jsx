@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import List from '../../components/List';
-import Image from '../../components/Image';
 import { listGetData } from '../../redux/ducks/list';
+// import classes from './style.scss';
+
 /** Calls the first page */
 class Index extends React.Component {
   static propTypes = {
@@ -24,7 +25,6 @@ class Index extends React.Component {
     } = this.props;
     return (
       <div>
-        <Image src="icon-calendar" alt="" />
         <div> Saldo {currentBalance} </div>
         <div> {queryDate} </div>
         <div> Bem vindo, {customer} </div>

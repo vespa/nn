@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Image from '../Image';
+import Image from '../../elements/Image';
+import Card from '../../elements/Card';
 import Confirm from '../Confirm';
+// import classes from './style.scss';
 
 /**
  * This component provides a simple List structure
@@ -22,11 +24,6 @@ class List extends React.Component {
     this._cancelMessage = this._cancelMessage.bind(this);
   }
 
-  /**
-   * @function
-   * @description removes a item from the list
-   * @param {object} e expects a event object
-   */
   _cancelMessage() {
     this.setState({
       messageConfirm: null,
@@ -58,19 +55,21 @@ class List extends React.Component {
     return (
       <React.Fragment>
         {messageConfirm}
-        <ul>
-          {options.map((item) => {
-            index += 1;
-            return (
-              <li key={`${item.text}${index}`}>
-                <span>{item.text}</span>
-                <a href="#remove" onClick={this._removeFromList}>
-                  <Image src="icon-delete" alt="deletar" />
-                </a>
-              </li>
-            );
-          }) }
-        </ul>
+        <Card>
+          <ul>
+            {options.map((item) => {
+              index += 1;
+              return (
+                <li key={`${item.text}${index}`}>
+                  <span>{item.text}</span>
+                  <a href="#remove" onClick={this._removeFromList}>
+                    <Image src="icon-delete" alt="deletar" />
+                  </a>
+                </li>
+              );
+            }) }
+          </ul>
+        </Card>
       </React.Fragment>
     );
   }
