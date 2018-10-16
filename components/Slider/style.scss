@@ -2,24 +2,40 @@
 @import '../../sass/mixins';
 
 .slider{
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  white-space: nowrap;
-  overflow: auto;
-  & > li {
-    list-style: none;
-    display: inline-block;
-    overflow: auto;
-    border: 1px solid red;
-    max-height: 70vh;
+  &__container{
+    max-height: 50px;
     height: 100vh;
-    @include mobile {
-      width: 90vw;
-      margin: 0 2vw;
-    }
-    @media only screen and (max-height: 366px) {
-      max-height: 50vh;
+    max-height: 70vh;
+    overflow: hidden;
+    position: relative;
+  }
+  width: 100%;
+  padding-bottom: 2rem;
+  height: 100vh;
+  & > ul {
+    transition: all 1000ms;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+    position: absolute;
+    left: 0;
+    & > li {
+      list-style: none;
+      display: inline-block;
+      overflow: auto;
+      max-height: 70vh;
+      height: 100vh;
+      opacity: .6;
+      &.active {
+        opacity: 1;
+      }
+      @include mobile {
+        width: 90vw;
+        margin: 0 2vw;
+      }
+      @media only screen and (max-height: 366px) {
+        max-height: 50vh;
+      }
     }
   }
 }
