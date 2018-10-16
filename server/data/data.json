@@ -5,31 +5,37 @@
   "extract": [
     {
       "type": "debit",
+      "title": "Débito",
       "text": "Este é um comprovante de compra",
-      "value": "188,00"
+      "value": "-188,00"
     },
     {
-      "type": "credit",
+      "type": "tax",
+      "title": "Tarifa",
       "text": "Este é um crédito em conta",
-      "value": "110,00"
+      "value": "-0,05"
+    },
+    {
+      "type": "tax",
+      "title": "Tarifa",
+      "text": "Este é um comprovante de compra",
+      "value": "-6,00"
     },
     {
       "type": "debit",
+      "title": "Débito",
       "text": "Este é um comprovante de compra",
-      "value": "60,00"
+      "value": "-200,00"
     },
     {
       "type": "debit",
+      "title": "Débito",
       "text": "Este é um comprovante de compra",
-      "value": "200,00"
-    },
-    {
-      "type": "debit",
-      "text": "Este é um comprovante de compra",
-      "value": "200,00"
+      "value": "-23,00"
     },
     {
       "type": "credit",
+      "title": "Crédito",
       "text": "Este é um crédito em conta",
       "value": "110,00"
     }

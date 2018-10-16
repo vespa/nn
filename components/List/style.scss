@@ -1,20 +1,47 @@
+@import '../../sass/vars';
 .list {
   padding: 0;
   margin: 0;
   &__item{
     display: flex;
-    line-height: 4.375rem;
     list-style: none;
+    overflow: hidden;
+    height: 4.375rem;
     border-bottom: 1px solid rgba(255,255,255,0.3);
+    background-color:  rgba(0,0,0,0);
+    transition: all 300ms;
     &:last-child {
       border: 0;
     }
+    &:hover{
+      background-color:  rgba(0,0,0,0.3)
+    }
     &__text {
+      padding: 1rem 0 0 0;
       flex: 7;
+      &__content {
+        width: 100%;
+        display: block;
+        padding: 0 0.5rem;
+        &--box{
+          margin-top: 3px;
+          font-weight: bold;
+        }
+      }
     }
     &__icon {
       flex: 1;
+      justify-content: center;
+      align-self: center;
       text-align: center;
+      img {
+        margin: auto;
+        pointer-events: none;
+      }
     }
   }
+}
+
+.credit {
+  color: $color__font--highlight;
 }

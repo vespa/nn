@@ -50,7 +50,7 @@ class List extends React.Component {
 
   _removeFromList(e) {
     e.preventDefault();
-    const target = e.target.parentNode.parentNode;
+    const target = e.target.parentNode;
     this._showMessage(target);
   }
 
@@ -70,7 +70,22 @@ class List extends React.Component {
                   <a href="#remove" onClick={this._removeFromList} className={classes.list__item__icon}>
                     <Image src="icon-categoria" alt="deletar" />
                   </a>
-                  <span className={classes.list__item__text}>{item.text}</span>
+                  <span className={classes.list__item__text}>
+                    <span
+                      className={`${classes.list__item__text__content}`}
+                    >
+                      {item.title}
+                    </span>
+                    <span
+                      className={`
+                        ${classes.list__item__text__content}
+                        ${classes['list__item__text__content--box']}
+                        ${classes[item.type]}
+                        `}
+                    >
+                      R$ {item.value}
+                    </span>
+                  </span>
                   {deletable && (
                   <a href="#remove" onClick={this._removeFromList} className={classes.list__item__icon}>
                     <Image src="icon-delete" alt="deletar" />
