@@ -10,8 +10,8 @@ const Message = ({ message, callback, cancel }) => {
         <div className={classes.message__text}>
           {message}
         </div>
-        <button type="button" onClick={cancel} className="btn btn--white right">cancela</button>
-        <button type="button" onClick={callback} className="btn btn--white right"> confirma </button>
+        <button type="button" onClick={cancel} className="btn btn--white">cancela</button>
+        <button type="button" onClick={callback} className="btn btn--white"> confirma </button>
       </div>
     </React.Fragment>
   );
