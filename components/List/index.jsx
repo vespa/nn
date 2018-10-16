@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Image from '../../elements/Image';
 import Card from '../../elements/Card';
 import Confirm from '../Confirm';
-// import classes from './style.scss';
+import classes from './style.scss';
 
 /**
  * This component provides a simple List structure
@@ -12,6 +12,12 @@ class List extends React.Component {
   static propTypes = {
     /** expects options to generate items */
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
+    /** if it's true, allows delete options */
+    deletable: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    deletable: false,
   }
 
   constructor(args) {
@@ -49,22 +55,28 @@ class List extends React.Component {
   }
 
   render() {
-    const { options } = this.props;
+    const { options, deletable } = this.props;
     const { messageConfirm } = this.state;
     let index = 0;
     return (
       <React.Fragment>
         {messageConfirm}
         <Card>
-          <ul>
+          <ul className={classes.list}>
             {options.map((item) => {
               index += 1;
               return (
-                <li key={`${item.text}${index}`}>
-                  <span>{item.text}</span>
-                  <a href="#remove" onClick={this._removeFromList}>
+                <li key={`${item.text}${index}`} className={classes.list__item}>
+                  <a href="#remove" onClick={this._removeFromList} className={classes.list__item__icon}>
+                    <Image src="icon-categoria" alt="deletar" />
+                  </a>
+                  <span className={classes.list__item__text}>{item.text}</span>
+                  {deletable && (
+                  <a href="#remove" onClick={this._removeFromList} className={classes.list__item__icon}>
                     <Image src="icon-delete" alt="deletar" />
                   </a>
+                  )}
+
                 </li>
               );
             }) }

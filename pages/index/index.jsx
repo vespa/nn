@@ -28,7 +28,7 @@ class Index extends React.Component {
         <div> Saldo {currentBalance} </div>
         <div> {queryDate} </div>
         <div> Bem vindo, {customer} </div>
-        <List options={extract} />
+        <List options={extract} deletable />
       </div>
     );
   }
