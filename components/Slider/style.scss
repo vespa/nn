@@ -1,0 +1,25 @@
+@import '../../sass/vars';
+@import '../../sass/mixins';
+
+.slider{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: auto;
+  & > li {
+    list-style: none;
+    display: inline-block;
+    overflow: auto;
+    border: 1px solid red;
+    max-height: 70vh;
+    height: 100vh;
+    @include mobile {
+      width: 90vw;
+      margin: 0 2vw;
+    }
+    @media only screen and (max-height: 366px) {
+      max-height: 50vh;
+    }
+  }
+}

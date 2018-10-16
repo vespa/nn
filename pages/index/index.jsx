@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import List from '../../components/List';
 import { listGetData } from '../../redux/ducks/list';
 import Header from '../../components/Header';
+import Slider from '../../components/Slider';
 
 // import classes from './style.scss';
 
@@ -28,7 +29,11 @@ class Index extends React.Component {
     return (
       <div>
         <Header currentBalance={currentBalance} customer={customer} date={queryDate} />
-        <List options={extract} deletable />
+        <Slider>
+          <List options={extract} />
+          <List options={extract} deletable />
+          <List options={extract} deletable />
+        </Slider>
       </div>
     );
   }
