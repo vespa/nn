@@ -12,26 +12,55 @@ class Slider extends React.PureComponent {
     this.ref = React.createRef();
     this.state = {
       active: 0,
+      touchStart: 0,
+      touchEnd: 0,
     };
-    this.isCurrent = this.isCurrent.bind(this);
+    this.next = this.next.bind(this);
+    this.setTouchStart = this.setTouchStart.bind(this);
+    this.setTouchEnd = this.setTouchEnd.bind(this);
+    this.setTouchCurrent = this.setTouchCurrent.bind(this);
   }
 
-  isCurrent() {
+  setTouchStart(e) {
+    const touch = e.touches[0];
+    console.log(touch.clientX);
+    this.setState({
+      touchStart: touch.clientX,
+    });
+  }
+
+  setTouchCurrent(e) {
+    const touch = e.touches[0];
+    this.setState({
+      touchEnd: touch.clientX,
+    });
+  }
+
+  setTouchEnd() {
+    const { touchStart, touchEnd } = this.state;
+    const left = touchStart >= touchEnd;
+    this.next(left);
+    console.log(left);
+  }
+
+  next(left) {
     const { children } = this.props;
     const { active } = this.state;
     const totalChilds = children.length;
     const maxScrollLeft = this.ref.current.scrollWidth;
     const divisions = maxScrollLeft / totalChilds;
+    const current = left ? 1 : -1;
+
     // const left = this.ref.current.scrollLeft;
     // this.ref.current.scrollLeft = 999;
-    console.log(divisions);
+    // console.log(divisions);
     setTimeout(()=>{
       this.ref.current.style.left = -(divisions) + "px";
     });
     this.setState({
-      active: active + 1,
+      active: current,
     })
-    
+
   }
 
   render() {
@@ -41,10 +70,10 @@ class Slider extends React.PureComponent {
     let count = 0;
     return (
       <div className={classes.slider__container}>
-        <div className={classes.slider} onTouchEnd={this.isCurrent}>
+        <div className={classes.slider} onTouchStart={this.setTouchStart} onTouchEnd={this.setTouchEnd} onTouchMove={this.setTouchCurrent}>
           <ul className={classes.slider} ref={this.ref}>
             {children.map((item, i) => {
-              acitveClass = i === active ? classes.active : ''
+              acitveClass = i === active ? classes.active : '';
               count += 1;
               return <li key={count} className={acitveClass}> {item}</li>;
             })}
