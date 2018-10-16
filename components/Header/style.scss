@@ -1,27 +1,47 @@
 @import '../../sass/vars';
-
+@import '../../sass/mixins';
 .header{
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
-  &__balance {
-    font-size: 2rem;
+
+  &__logo {
+    background-image: url('../../assets/neon-logo-02.png');
+    background-repeat: no-repeat;
+    background-position: 1rem center;
+    height: 7rem;
+    @include mobile {
+      background-image: url('../../assets/neon-logo-01.png');
+      height: auto;
+    }
   }
   &__separator{
     background-image: linear-gradient(to right, transparent, $color__font--highlight, transparent);
     height: 2px;
     margin: 1rem 0;
+    @include mobile {
+      margin: 0.5rem 0;
+    }
   }
   & > div {
     width: 33.3%;
     flex-grow: 0;
-    padding: 1rem;
     &:nth-child(3n+2){
       text-align: center;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
+      @include mobile {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+  &__balance {
+    font-size: 2rem;
+    padding: 2rem 0 0 0;
+    font-weight: bold;
+    @include mobile {
+      font-size: 1.2rem;
+      padding: 1rem 0;
     }
   }
 }
