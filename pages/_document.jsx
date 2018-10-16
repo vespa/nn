@@ -17,7 +17,8 @@ export default class MyDocument extends Document {
           <link rel="stylesheet" href="/_next/static/style.css" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <link rel="shortcut icon" type="image/x-icon" href="/static/assets/favicon.ico" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
         </Head>
         <body>
           <Main />
