@@ -11,7 +11,8 @@
         "react/jsx-one-expression-per-line": 0
     },
     "env": {
-        "jest/globals": true
+        "jest/globals": true,
+        "browser": true
     },
     "globals": {
         "fetch" : true

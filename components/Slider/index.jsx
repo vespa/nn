@@ -19,11 +19,23 @@ class Slider extends React.PureComponent {
     this.setTouchStart = this.setTouchStart.bind(this);
     this.setTouchEnd = this.setTouchEnd.bind(this);
     this.setTouchCurrent = this.setTouchCurrent.bind(this);
+    this.goTo = this.goTo.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', () => {
+      const { active } = this.state;
+      this.setState({
+        active: active - 1,
+        touchEnd: 0,
+      }, () => {
+        this.next(true);
+      });
+    });
   }
 
   setTouchStart(e) {
     const touch = e.touches[0];
-    console.log(touch.clientX);
     this.setState({
       touchStart: touch.clientX,
     });
@@ -37,10 +49,14 @@ class Slider extends React.PureComponent {
   }
 
   setTouchEnd() {
+    const range = 100;
     const { touchStart, touchEnd } = this.state;
-    const left = touchStart >= touchEnd;
-    this.next(left);
-    console.log(left);
+    if (touchEnd === 0) return false;
+    let left = touchStart >= touchEnd;
+    left = touchStart === touchEnd ? null : left;
+    const distance = touchStart - touchEnd;
+    if (Math.abs(distance) > range) this.next(left);
+    return true;
   }
 
   next(left) {
@@ -50,17 +66,26 @@ class Slider extends React.PureComponent {
     const maxScrollLeft = this.ref.current.scrollWidth;
     const divisions = maxScrollLeft / totalChilds;
     const current = left ? 1 : -1;
-
-    // const left = this.ref.current.scrollLeft;
-    // this.ref.current.scrollLeft = 999;
-    // console.log(divisions);
-    setTimeout(()=>{
-      this.ref.current.style.left = -(divisions) + "px";
-    });
+    let show = active + current;
+    show = (show) < 0 ? 0 : show;
+    show = (show) > totalChilds - 1 ? totalChilds - 1 : show;
+    this.ref.current.style.left = `${-(divisions * show)}px`;
     this.setState({
-      active: current,
-    })
+      active: show,
+      touchEnd: 0,
+    });
+  }
 
+  goTo(slide) {
+    return (e) => {
+      e.preventDefault();
+      this.setState({
+        active: slide - 1,
+        touchEnd: 0,
+      }, () => {
+        this.next(true);
+      });
+    };
   }
 
   render() {
@@ -69,15 +94,29 @@ class Slider extends React.PureComponent {
     let acitveClass;
     let count = 0;
     return (
-      <div className={classes.slider__container}>
-        <div className={classes.slider} onTouchStart={this.setTouchStart} onTouchEnd={this.setTouchEnd} onTouchMove={this.setTouchCurrent}>
-          <ul className={classes.slider} ref={this.ref}>
-            {children.map((item, i) => {
-              acitveClass = i === active ? classes.active : '';
-              count += 1;
-              return <li key={count} className={acitveClass}> {item}</li>;
-            })}
-          </ul>
+      <div>
+        <div className={classes.slider__container}>
+          <div
+            className={classes.slider}
+            onTouchStart={this.setTouchStart}
+            onTouchEnd={this.setTouchEnd}
+            onTouchMove={this.setTouchCurrent}
+          >
+            <ul className={classes.slider} ref={this.ref}>
+              {children.map((item, i) => {
+                acitveClass = i === active ? classes.active : '';
+                count += 1;
+                return <li key={count} className={acitveClass}> {item}</li>;
+              })}
+            </ul>
+          </div>
+        </div>
+        <div className={`${classes.slider__nav}`}>
+          {children.map((item, i) => {
+            count += 1;
+            acitveClass = i === active ? classes.active : '';
+            return <a href={`${i}`} key={count} onClick={this.goTo(i)} className={`${acitveClass} ${classes.slider__nav__item}`}>{i}</a>;
+          })}
         </div>
       </div>
     );

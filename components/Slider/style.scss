@@ -8,12 +8,34 @@
     max-height: 70vh;
     overflow: hidden;
     position: relative;
+    @media only screen and (max-height: 366px) {
+      max-height: 50vh;
+    }
   }
   width: 100%;
   padding-bottom: 2rem;
   height: 100vh;
+  &__nav {
+    display: table;
+    clear: both;
+    margin: 0 auto;
+    &__item {
+      display: block;
+      margin: 0.5rem;
+      border: 1px solid $color__background--secondary;
+      opacity: 0.3;
+      color: transparent;
+      width: 1.25rem;
+      height: 1.25rem;
+      float: left;
+      transition: all 1000ms ease;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
   & > ul {
-    transition: all 1000ms;
+    transition: all 1000ms ease;
     padding: 0;
     margin: 0;
     white-space: nowrap;

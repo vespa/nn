@@ -67,9 +67,9 @@ class List extends React.Component {
               index += 1;
               return (
                 <li key={`${item.text}${index}`} className={classes.list__item}>
-                  <a href="#remove" onClick={this._removeFromList} className={classes.list__item__icon}>
-                    <Image src="icon-categoria" alt="deletar" />
-                  </a>
+                  <span className={`${classes.list__item__icon} ${classes['hide-mobile']}`}>
+                    <Image src="icon-categoria" alt="categoria" />
+                  </span>
                   <span className={classes.list__item__text}>
                     <span
                       className={`${classes.list__item__text__content}`}
