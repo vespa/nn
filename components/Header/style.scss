@@ -1,0 +1,27 @@
+@import '../../sass/vars';
+
+.header{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  &__balance {
+    font-size: 2rem;
+  }
+  &__separator{
+    background-image: linear-gradient(to right, transparent, $color__font--highlight, transparent);
+    height: 2px;
+    margin: 1rem 0;
+  }
+  & > div {
+    width: 33.3%;
+    flex-grow: 0;
+    padding: 1rem;
+    &:nth-child(3n+2){
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}
