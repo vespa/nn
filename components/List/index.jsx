@@ -28,6 +28,7 @@ class List extends React.Component {
     this._removeFromList = this._removeFromList.bind(this);
     this._showMessage = this._showMessage.bind(this);
     this._cancelMessage = this._cancelMessage.bind(this);
+    this._callMessage = this._callMessage.bind(this);
   }
 
   _cancelMessage() {
@@ -36,12 +37,16 @@ class List extends React.Component {
     });
   }
 
+  _callMessage(target) {
+    return () => {
+      target.parentNode.removeChild(target);
+      this._cancelMessage();
+    };
+  }
+
   _showMessage(target) {
     const cancel = this._cancelMessage;
-    const callback = () => {
-      target.parentNode.removeChild(target);
-      cancel();
-    };
+    const callback = this._callMessage(target);
     const messageConfirm = <Confirm message="Confirma exclusão?" callback={callback} cancel={cancel} />;
     this.setState({
       messageConfirm,
