@@ -7,19 +7,14 @@
 On application's root: 
 
 ```js 
-`npm start`
+npm start
 ```
 
 ### Run tests and coverage:
 ```js 
-`npm test`
+npm test
 ```
 ### Run ESLint
 ```js 
-`npm run lint`
-```
-
-### Generate Docs (up on http://localhost:6060/)
-```js 
-`npm run docs`
+npm run lint
 ```
