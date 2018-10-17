@@ -6,7 +6,7 @@ describe('[Component: List]', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(
-      <Header currentBalance="1,00" customer="Juca" date={2018} deletable />,
+      <Header currentBalance="1,00" customer="Juca" date={2018} />,
     );
   });
 
