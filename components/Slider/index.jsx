@@ -15,11 +15,11 @@ class Slider extends React.PureComponent {
       touchStart: 0,
       touchEnd: 0,
     };
-    this.next = this.next.bind(this);
+    this._next = this._next.bind(this);
     this.setTouchStart = this.setTouchStart.bind(this);
-    this.setTouchEnd = this.setTouchEnd.bind(this);
+    this._setTouchEnd = this._setTouchEnd.bind(this);
     this.setTouchCurrent = this.setTouchCurrent.bind(this);
-    this.goTo = this.goTo.bind(this);
+    this._goTo = this._goTo.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class Slider extends React.PureComponent {
         active: active - 1,
         touchEnd: 0,
       }, () => {
-        this.next(true);
+        this._next(true);
       });
     });
   }
@@ -48,18 +48,18 @@ class Slider extends React.PureComponent {
     });
   }
 
-  setTouchEnd() {
+  _setTouchEnd() {
     const range = 100;
     const { touchStart, touchEnd } = this.state;
     if (touchEnd === 0) return false;
     let left = touchStart >= touchEnd;
     left = touchStart === touchEnd ? null : left;
     const distance = touchStart - touchEnd;
-    if (Math.abs(distance) > range) this.next(left);
+    if (Math.abs(distance) > range) this._next(left);
     return true;
   }
 
-  next(left) {
+  _next(left) {
     const { children } = this.props;
     const { active } = this.state;
     const totalChilds = children.length;
@@ -76,14 +76,14 @@ class Slider extends React.PureComponent {
     });
   }
 
-  goTo(slide) {
+  _goTo(slide) {
     return (e) => {
       e.preventDefault();
       this.setState({
         active: slide - 1,
         touchEnd: 0,
       }, () => {
-        this.next(true);
+        this._next(true);
       });
     };
   }
@@ -99,7 +99,7 @@ class Slider extends React.PureComponent {
           <div
             className={classes.slider}
             onTouchStart={this.setTouchStart}
-            onTouchEnd={this.setTouchEnd}
+            onTouchEnd={this._setTouchEnd}
             onTouchMove={this.setTouchCurrent}
           >
             <ul className={classes.slider} ref={this.ref}>
@@ -115,7 +115,7 @@ class Slider extends React.PureComponent {
           {children.map((item, i) => {
             count += 1;
             acitveClass = i === active ? classes.active : '';
-            return <a href={`${i}`} key={count} onClick={this.goTo(i)} className={`${acitveClass} ${classes.slider__nav__item}`}>{i}</a>;
+            return <a href={`${i}`} key={count} onClick={this._goTo(i)} className={`${acitveClass} ${classes.slider__nav__item}`}>{i}</a>;
           })}
         </div>
       </div>

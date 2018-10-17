@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import List from './index';
 
-describe('[Component: List]', () => {
+describe('[Component] List', () => {
   let wrapper;
   let e;
   const items = [
