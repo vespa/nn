@@ -11,6 +11,6 @@ module.exports = {
   "collectCoverage": true,
   "collectCoverageFrom": [
     "**/components/**.{js,jsx}",
-    "**/pages/index/**.{js,jsx}",
+    "**/elements/**.{js,jsx}",
   ],
 }

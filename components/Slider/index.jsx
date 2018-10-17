@@ -16,32 +16,40 @@ class Slider extends React.PureComponent {
       touchEnd: 0,
     };
     this._next = this._next.bind(this);
-    this.setTouchStart = this.setTouchStart.bind(this);
+    this._setTouchStart = this._setTouchStart.bind(this);
     this._setTouchEnd = this._setTouchEnd.bind(this);
-    this.setTouchCurrent = this.setTouchCurrent.bind(this);
+    this._setTouchCurrent = this._setTouchCurrent.bind(this);
     this._goTo = this._goTo.bind(this);
+    this._updateResize = this._updateResize.bind(this);
+    this._listenToRezise = this._listenToRezise.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => {
-      const { active } = this.state;
-      this.setState({
-        active: active - 1,
-        touchEnd: 0,
-      }, () => {
-        this._next(true);
-      });
+    this._listenToRezise();
+  }
+
+  _listenToRezise() {
+    window.addEventListener('resize', this._updateResize);
+  }
+
+  _updateResize() {
+    const { active } = this.state;
+    this.setState({
+      active: active - 1,
+      touchEnd: 0,
+    }, () => {
+      this._next(true);
     });
   }
 
-  setTouchStart(e) {
+  _setTouchStart(e) {
     const touch = e.touches[0];
     this.setState({
       touchStart: touch.clientX,
     });
   }
 
-  setTouchCurrent(e) {
+  _setTouchCurrent(e) {
     const touch = e.touches[0];
     this.setState({
       touchEnd: touch.clientX,
@@ -52,8 +60,7 @@ class Slider extends React.PureComponent {
     const range = 100;
     const { touchStart, touchEnd } = this.state;
     if (touchEnd === 0) return false;
-    let left = touchStart >= touchEnd;
-    left = touchStart === touchEnd ? null : left;
+    const left = touchStart >= touchEnd;
     const distance = touchStart - touchEnd;
     if (Math.abs(distance) > range) this._next(left);
     return true;
@@ -98,9 +105,9 @@ class Slider extends React.PureComponent {
         <div className={classes.slider__container}>
           <div
             className={classes.slider}
-            onTouchStart={this.setTouchStart}
+            onTouchStart={this._setTouchStart}
             onTouchEnd={this._setTouchEnd}
-            onTouchMove={this.setTouchCurrent}
+            onTouchMove={this._setTouchCurrent}
           >
             <ul className={classes.slider} ref={this.ref}>
               {children.map((item, i) => {
