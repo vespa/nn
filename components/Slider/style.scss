@@ -4,17 +4,21 @@
 .slider{
   &__container{
     max-height: 50px;
-    height: 100vh;
     max-height: 70vh;
     overflow: hidden;
     position: relative;
-    @media only screen and (max-height: 366px) {
-      max-height: 50vh;
+    width: 60rem;
+    height: 33rem;
+    margin: 0 auto;
+    @include mobile {
+      width: 90vw;
+      width: 100%;
+    }
+    @media only screen and (max-height: 412px) {
+      max-height: 55vh;
+      width: 100%;
     }
   }
-  width: 100%;
-  padding-bottom: 2rem;
-  height: 100vh;
   &__nav {
     display: table;
     clear: both;
@@ -40,6 +44,10 @@
     margin: 0;
     white-space: nowrap;
     position: absolute;
+    margin-left: 10.5rem;
+    @include mobile {
+      margin: 0;
+    }
     left: 0;
     & > li {
       list-style: none;
@@ -47,7 +55,9 @@
       overflow: auto;
       max-height: 70vh;
       height: 100vh;
+      width: 32rem;
       opacity: .6;
+      margin: 0 3.125rem;
       &.active {
         opacity: 1;
       }
