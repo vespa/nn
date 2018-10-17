@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from '../../elements/Image';
 import Card from '../../elements/Card';
-import Confirm from '../Confirm';
+import Confirm from '../../elements/Confirm';
 import classes from './style.scss';
 
 /**

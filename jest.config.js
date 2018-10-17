@@ -11,7 +11,6 @@ module.exports = {
   "collectCoverage": true,
   "collectCoverageFrom": [
     "**/components/**.{js,jsx}",
-    "**/redux/**.{js,jsx}",
     "**/pages/index/**.{js,jsx}",
   ],
 }
